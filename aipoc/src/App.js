@@ -3,6 +3,7 @@ import './components/Navcomp';
 import Navcomp from './components/Navcomp';
 import Home from './components/Home'
 import Tasklist from './components/Tasklist'
+import  About from './components/About'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navcomp />
       <Home />
       <Tasklist />
+      <About />
     </div>
   );
 }
