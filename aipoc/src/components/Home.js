@@ -10,6 +10,21 @@ class Home extends React.Component {
             api_info:[],
             error:null
         }
+
+    }
+    getdata=()=>{
+        fetch(`http://127.0.0.1:8000/items/`)
+    
+        .then(response => response.json())
+        
+        .then(data =>
+          this.setState({
+            api_info: data
+          })
+        )
+        
+        .catch(error => this.setState({ error }));
+        setInterval(this.getdata,10000)
     }
     componentDidMount(){
         fetch(`http://127.0.0.1:8000/items/`)
@@ -24,6 +39,7 @@ class Home extends React.Component {
         )
         
         .catch(error => this.setState({ error, isLoading: false }));
+        this.getdata()
     }
     render() {
         const { isLoading, api_info, error } = this.state;
@@ -52,15 +68,15 @@ class Home extends React.Component {
                             <h1 class="online_status">CPU informations?</h1>
                             <div className="cpu_info">
                                 <h1 className="cpu_info_head">Temperature:</h1>
-                                <h1 className="cpu_info_right">{temp}</h1>
+                                <h1 className="cpu_info_right">{status?temp:"--"}</h1>
                                 <h1 className="cpu_info_head">Camera:</h1>
-                                <h1 className="cpu_info_right">{camera?"detected":"Not detected"}</h1>
+                                <h1 className="cpu_info_right">{status&&camera?"detected":"Not detected"}</h1>
                                 <h1 className="cpu_info_head">IR Sensor:</h1>
-                                <h1 className="cpu_info_right">{ir?"detected":"Not detected"}</h1>
+                                <h1 className="cpu_info_right">{status&&ir?"detected":"Not detected"}</h1>
                                 <h1 className="cpu_info_head">Connection Speed:</h1>
-                                <h1 className="cpu_info_right">{con_speed}</h1>
+                                <h1 className="cpu_info_right">{status?con_speed:"--"}</h1>
                                 <h1 className="cpu_info_head">CPU Usage:</h1>
-                                <h1 className="cpu_info_right">{cpu}</h1>
+                                <h1 className="cpu_info_right">{status?cpu:"--"}</h1>
                             </div>
 
                         </div>
