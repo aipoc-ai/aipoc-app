@@ -9,7 +9,10 @@
     padding-right: 100px;
     height: 62px;
     margin-top: 20px;
-    display: flex;   
+    display: flex;  
+    position: sticky; 
+    top: 0;
+    background-color: white;
 }
 .navlink{
     text-decoration: none;
@@ -42,7 +45,7 @@
 .questions{
     float: left;
     margin-top: 30px;
-    height: 360px;
+    height: 330px;
     width: 530px;
     background-color: #C4C4C4;
     border-radius: 76px;
@@ -51,7 +54,7 @@
 .information_right{
     float: right;
     margin-top: 30px;
-    height: 360px;
+    height: 330px;
     width: 530px;
     background-color: #C4C4C4;
     border-radius: 76px;

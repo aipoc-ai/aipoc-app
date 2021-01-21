@@ -5,7 +5,7 @@ class Tasklist extends React.Component {
     render() {
         return (
             <div className="taskslist">
-                <h1 className="online_status">Tasks list!</h1>
+                <h1 className="list_name">Tasks list!</h1>
                 <div className="list"></div>
             </div>
         )

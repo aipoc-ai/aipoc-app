@@ -1,15 +1,21 @@
 import React from 'react'
 import "./style.css"
 import aipoc from "../pics/aipoc.jpg"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 class Navcomp extends React.Component {
     render() {
         return (
             <div className="navbar">
-                <a href="index.html" className="navlink"><li className="navbar_logo"><img alt="aipoc" width="140px" src= {aipoc}></img></li></a>
-                <a href="index.html" className="navlink"><li className="navbar_child">Home</li></a>
-                <a href="taskslist.html" className="navlink"><li className="navbar_child">Tasks list</li></a>
-                <a href="about.html" className="navlink"><li className="navbar_child">About</li></a>
+                <li className="navbar_logo"><Link className="navlink" to="/"><img alt="aipoc" width="140px" src= {aipoc}></img></Link></li>
+                <li className="navbar_child"><Link className="navlink" to="/">Home</Link></li>
+                <li className="navbar_child"><Link className="navlink" to="/tasklist">Tasks list</Link></li>
+                <li className="navbar_child"><Link className="navlink" to="/about">About</Link></li>
                 <a href="d.html" className="navlink"><li className="navbar_child">Docs</li></a>
             </div>
         )
