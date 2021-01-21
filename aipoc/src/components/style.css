@@ -64,3 +64,34 @@
     margin-top: 20px;
     text-align: center;
 }
+.cpu_info{
+    box-sizing: border-box;
+    padding: 40px;
+}
+.cpu_info_head{
+    clear: both;
+    font-size: 18px;
+    line-height: 35px;
+    float: left;
+}
+.cpu_info_right{
+    font-size: 18px;
+    line-height: 35px;
+    float: right;
+    text-align: right;
+    width: 150px;
+    text-align: center;
+}
+.error{
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: green;
+    background-color: rgba(128, 128, 128, 0.171);
+    border: 1px solid gray;
+    border-radius: 5px;
+
+}
+.loding{
+    font: 100px;
+}
