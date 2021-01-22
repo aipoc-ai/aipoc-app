@@ -8,12 +8,13 @@ class Home extends React.Component {
         this.state = {
             isloding:true,
             api_info:[],
-            error:null
+            error:null,
+            intervalID:null
         }
-
     }
     getdata=()=>{
-        fetch(`http://127.0.0.1:8000/items/`)
+      this.setState({ error:null })
+        fetch(`http://3.87.191.168/items/`)
     
         .then(response => response.json())
         
@@ -24,22 +25,13 @@ class Home extends React.Component {
         )
         
         .catch(error => this.setState({ error }));
-        setInterval(this.getdata,10000)
+        this.setState({intervalID : setInterval(this.getdata.bind(this), 10000)})
     }
     componentDidMount(){
-        fetch(`http://127.0.0.1:8000/items/`)
-        
-        .then(response => response.json())
-        
-        .then(data =>
-          this.setState({
-            api_info: data,
-            isLoading: false,
-          })
-        )
-        
-        .catch(error => this.setState({ error, isLoading: false }));
         this.getdata()
+    }
+    componentWillUnmount(){
+        clearInterval(this.state.intervalID)
     }
     render() {
         const { isLoading, api_info, error } = this.state;
