@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/aipoc-app/static/css/main.1f8b1cdf.chunk.css",
+    "main.js": "/aipoc-app/static/js/main.9d5e4906.chunk.js",
+    "main.js.map": "/aipoc-app/static/js/main.9d5e4906.chunk.js.map",
+    "runtime-main.js": "/aipoc-app/static/js/runtime-main.e3ceaee8.js",
+    "runtime-main.js.map": "/aipoc-app/static/js/runtime-main.e3ceaee8.js.map",
+    "static/js/2.e8dbf58c.chunk.js": "/aipoc-app/static/js/2.e8dbf58c.chunk.js",
+    "static/js/2.e8dbf58c.chunk.js.map": "/aipoc-app/static/js/2.e8dbf58c.chunk.js.map",
+    "static/js/3.6a78c3b3.chunk.js": "/aipoc-app/static/js/3.6a78c3b3.chunk.js",
+    "static/js/3.6a78c3b3.chunk.js.map": "/aipoc-app/static/js/3.6a78c3b3.chunk.js.map",
+    "index.html": "/aipoc-app/index.html",
+    "static/css/main.1f8b1cdf.chunk.css.map": "/aipoc-app/static/css/main.1f8b1cdf.chunk.css.map",
+    "static/js/2.e8dbf58c.chunk.js.LICENSE.txt": "/aipoc-app/static/js/2.e8dbf58c.chunk.js.LICENSE.txt",
+    "static/media/aipoc.fd8df3b5.jpg": "/aipoc-app/static/media/aipoc.fd8df3b5.jpg",
+    "static/media/logo.a06a4dfe.svg": "/aipoc-app/static/media/logo.a06a4dfe.svg",
+    "static/media/name.df188d76.svg": "/aipoc-app/static/media/name.df188d76.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e3ceaee8.js",
+    "static/js/2.e8dbf58c.chunk.js",
+    "static/css/main.1f8b1cdf.chunk.css",
+    "static/js/main.9d5e4906.chunk.js"
+  ]
+}
