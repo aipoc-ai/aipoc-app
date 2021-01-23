@@ -25,7 +25,7 @@ class Home extends React.Component {
         )
         
         .catch(error => this.setState({ error }));
-        this.setState({intervalID : setInterval(this.getdata.bind(this), 10000)})
+        this.setState({intervalID : setInterval(this.getdata.bind(this), 15000)})
     }
     componentDidMount(){
         this.getdata()
