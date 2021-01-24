@@ -9,7 +9,9 @@ class Home extends React.Component {
             isloding:true,
             api_info:[],
             error:null,
-            intervalID:null
+            intervalID:null,
+            questions:[],
+            ques_error:null,
         }
     }
     getdata=()=>{
@@ -24,11 +26,23 @@ class Home extends React.Component {
           })
         )
         
-        .catch(error => this.setState({ error }));
-        this.setState({intervalID : setInterval(this.getdata.bind(this), 15000)})
+        .catch(error => this.setState({ error:error }));
+
+        fetch(`http://3.87.191.168/ques/`)
+    
+        .then(response => response.json())
+        
+        .then(data =>
+          this.setState({
+            questions: data
+          })
+        )
+        
+        .catch(error => this.setState({ ques_error:error }));
+
     }
     componentDidMount(){
-        this.getdata()
+      this.setState({intervalID : setInterval(this.getdata.bind(this), 2000)})
     }
     componentWillUnmount(){
         clearInterval(this.state.intervalID)
@@ -46,18 +60,24 @@ class Home extends React.Component {
                 return (
                   <div key={id}>
                     
-                    <div class="online">
+                    <div className="online">
                         <img alt="logo" width="150px" src={logo}/>
-                        <h1 class="online_status"><i style={{color:"green"}} class="fas fa-dot-circle"></i>{status?"online":"offline"}</h1>
+                        <h1 className="online_status"><i style={{color:"green"}} class="fas fa-dot-circle"></i>{status?"online":"offline"}</h1>
                     </div>
-                    <div class="questions">
-                        <div class="box_text">
-                            <h1 class="online_status">Recent questions?</h1>
+                    <div className="questions">
+                        <div className="box_text">
+                            <h1 className="online_status">Recent questions?</h1>
+                            <div className="ques_ans">
+                              {this.state.questions.map((ques)=>(
+                                <h1 className="ques_info">{ques}</h1>
+                              ))}
+
+                            </div>
                         </div>
                     </div>
-                    <div class="information_right">
-                        <div class="box_text">
-                            <h1 class="online_status">CPU informations?</h1>
+                    <div className="information_right">
+                        <div className="box_text">
+                            <h1 className="online_status">CPU informations?</h1>
                             <div className="cpu_info">
                                 <h1 className="cpu_info_head">Temperature:</h1>
                                 <h1 className="cpu_info_right">{status?temp:"--"}</h1>
