@@ -1,6 +1,7 @@
 import React from 'react'
 import "./style.css"
 import logo from "../pics/logo.svg"
+import "../../node_modules/font-awesome/css/font-awesome.css"
 
 class Home extends React.Component {
     constructor(props){
@@ -42,7 +43,7 @@ class Home extends React.Component {
 
     }
     componentDidMount(){
-      this.setState({intervalID : setInterval(this.getdata.bind(this), 2000)})
+      this.setState({intervalID : setInterval(this.getdata.bind(this), 1000)})
     }
     componentWillUnmount(){
         clearInterval(this.state.intervalID)
@@ -62,14 +63,15 @@ class Home extends React.Component {
                     
                     <div className="online">
                         <img alt="logo" width="150px" src={logo}/>
-                        <h1 className="online_status"><i style={{color:"green"}} class="fas fa-dot-circle"></i>{status?"online":"offline"}</h1>
+                        {status?<h1 className="online_status"><button class='oncircle'></button>online</h1>:<h1 className="online_status"><button class='offcircle'></button>offline</h1>}
                     </div>
                     <div className="questions">
                         <div className="box_text">
-                            <h1 className="online_status">Recent questions?</h1>
+                            <h1 className="recent_questions">Recent questions?</h1>
                             <div className="ques_ans">
-                              {this.state.questions.map((ques)=>(
-                                <h1 className="ques_info">{ques}</h1>
+                              {this.state.ques_error ? <p  className="error">{this.state.error.message}.try again!!</p> : null}
+                              {this.state.questions.reverse().map((ques)=>(
+                                <h1 key={ques.id} className="ques_info">{ques.asked_ques}</h1>
                               ))}
 
                             </div>
@@ -96,9 +98,8 @@ class Home extends React.Component {
                   </div>
                 );
               })
-            ) : (
-              <h3 className="loding">Loading...</h3>
-            )}
+            ) : 
+              <h3 className="loding">Loading...</h3>}
         </div>
         );
       }
