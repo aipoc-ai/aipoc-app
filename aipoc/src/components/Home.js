@@ -1,13 +1,13 @@
 import React from 'react'
 import "./style.css"
 import logo from "../pics/logo.svg"
-import "../../node_modules/font-awesome/css/font-awesome.css"
+import load from "../pics/load.gif"
 
 class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isloding:true,
+            isloding:false,
             api_info:[],
             error:null,
             intervalID:null,
@@ -17,29 +17,30 @@ class Home extends React.Component {
     }
     getdata=()=>{
       this.setState({ error:null })
-        fetch(`http://3.87.191.168/items/`)
-    
-        .then(response => response.json())
-        
-        .then(data =>
-          this.setState({
-            api_info: data
-          })
-        )
-        
-        .catch(error => this.setState({ error:error }));
+      fetch(`http://3.87.191.168/items/`)
+  
+      .then(response => response.json())
+      
+      .then(data =>
+        this.setState({
+          api_info: data
+        })
+      )
+      
+      .catch(error => this.setState({ error:error }));
 
-        fetch(`http://3.87.191.168/ques/`)
-    
-        .then(response => response.json())
-        
-        .then(data =>
-          this.setState({
-            questions: data
-          })
-        )
-        
-        .catch(error => this.setState({ ques_error:error }));
+      fetch(`http://3.87.191.168/ques/`)
+  
+      .then(response => response.json())
+      
+      .then(data =>
+        this.setState({
+          isLoading:true,
+          questions: data
+        })
+      )
+      
+      .catch(error => this.setState({ ques_error:error }));
 
     }
     componentDidMount(){
@@ -55,7 +56,7 @@ class Home extends React.Component {
 
             <h1>{error ? <p  className="error">{error.message}.try again!!</p> : null}</h1>
 
-            {!isLoading ? (
+            {isLoading ? (
               api_info.map(info => {
                 const {id, status,temp,con_speed,cpu,camera,ir } = info;
                 return (
@@ -70,10 +71,9 @@ class Home extends React.Component {
                             <h1 className="recent_questions">Recent questions?</h1>
                             <div className="ques_ans">
                               {this.state.ques_error ? <p  className="error">{this.state.error.message}.try again!!</p> : null}
-                              {this.state.questions.reverse().map((ques)=>(
+                              {this.state.questions.map((ques)=>(
                                 <h1 key={ques.id} className="ques_info">{ques.asked_ques}</h1>
                               ))}
-
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ class Home extends React.Component {
                 );
               })
             ) : 
-              <h3 className="loding">Loading...</h3>}
+              <h3 className="loding"><img className="load" alt="loading..." src={load}/></h3>}
         </div>
         );
       }

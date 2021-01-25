@@ -111,6 +111,8 @@
 .ques_ans{
     box-sizing: border-box;
     padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .ques_info{
     clear: both;
@@ -144,4 +146,9 @@
     height: 15px;
     width: 15px;
     outline: none;
+}
+.load{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
