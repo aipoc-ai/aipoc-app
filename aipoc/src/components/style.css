@@ -66,17 +66,19 @@
 
 }
 .box_text{
-    margin-top: 20px;
+
     text-align: center;
     height: 330px;
     width: 530px;
     background-color: #C4C4C4;
     border-radius: 76px;
+    overflow: hidden;
     overflow-y: auto;
 
 }
 .cpu_info{
     box-sizing: border-box;
+    overflow: hidden;
     padding: 40px;
 }
 .cpu_info_head{
@@ -132,6 +134,7 @@
     position: sticky;
     background-color: #C4C4C4;
     top: 0;
+    margin-top: 25px;
 }
 .oncircle{
     background-color: green;

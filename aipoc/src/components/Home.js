@@ -79,18 +79,18 @@ class Home extends React.Component {
                     </div>
                     <div className="information_right">
                         <div className="box_text">
-                            <h1 className="online_status">CPU informations?</h1>
+                            <h1 className="recent_questions">CPU informations?</h1>
                             <div className="cpu_info">
                                 <h1 className="cpu_info_head">Temperature:</h1>
-                                <h1 className="cpu_info_right">{status?temp:"--"}</h1>
+                                <h1 className="cpu_info_right">{status?temp:"--"}&deg;F</h1>
                                 <h1 className="cpu_info_head">Camera:</h1>
-                                <h1 className="cpu_info_right">{status&&camera?"detected":"Not detected"}</h1>
+                                <h1 className="cpu_info_right">{status&&camera?"Detected":"Not detected"}</h1>
                                 <h1 className="cpu_info_head">IR Sensor:</h1>
-                                <h1 className="cpu_info_right">{status&&ir?"detected":"Not detected"}</h1>
+                                <h1 className="cpu_info_right">{status&&ir?"Detected":"Not detected"}</h1>
                                 <h1 className="cpu_info_head">Connection Speed:</h1>
-                                <h1 className="cpu_info_right">{status?con_speed:"--"}</h1>
+                                <h1 className="cpu_info_right">{status?con_speed:"--"} Kbps</h1>
                                 <h1 className="cpu_info_head">CPU Usage:</h1>
-                                <h1 className="cpu_info_right">{status?cpu:"--"}</h1>
+                                <h1 className="cpu_info_right">{status?cpu:"--"}%</h1>
                             </div>
 
                         </div>

@@ -19,8 +19,7 @@ class Tasklist extends React.Component {
                     <h1 className="new_list" >10. Create facebook post</h1>
                     <h1 className="new_list" >11. Colour detector</h1>
                     <h1 className="new_list" >12. wikipedia</h1>
-                    <h1 className="new_list" >13. Colour detector</h1>
-                    <h1 className="new_list" >14. Play music</h1>
+                    <h1 className="new_list" >13. Play music</h1>
                 </div>
             </div>
         )
