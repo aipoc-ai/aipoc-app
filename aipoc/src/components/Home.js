@@ -2,52 +2,56 @@ import React from 'react'
 import "./style.css"
 import logo from "../pics/logo.svg"
 import load from "../pics/load.gif"
+import io from "socket.io-client";
 
 class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            isloding:false,
-            api_info:[],
+            isloding:true,
+            api_info:[{
+              "id":1, 
+              "status":false,
+              "temp":"_",
+              "con_speed":"_",
+              "cpu":"_",
+              "camera":false,
+              "ir":false
+          }],
             error:null,
             intervalID:null,
             questions:[],
             ques_error:null,
         }
     }
-    getdata=()=>{
-      this.setState({ error:null })
-      fetch(`http://3.87.191.168/items/`)
-  
-      .then(response => response.json())
-      
-      .then(data =>
-        this.setState({
-          api_info: data
-        })
-      )
-      
-      .catch(error => this.setState({ error:error }));
-
-      fetch(`http://3.87.191.168/ques/`)
-  
-      .then(response => response.json())
-      
-      .then(data =>
-        this.setState({
-          isLoading:true,
-          questions: data
-        })
-      )
-      
-      .catch(error => this.setState({ ques_error:error }));
-
-    }
     componentDidMount(){
-      this.setState({intervalID : setInterval(this.getdata.bind(this), 1000)})
-    }
-    componentWillUnmount(){
-        clearInterval(this.state.intervalID)
+      const socket = io("http://127.0.0.1:5000");
+      socket.on('connect', function() {
+        console.log("Connected to WS server");
+      
+        console.log(socket.connected); 
+      
+      });
+      socket.on('message', (data) => {
+        console.log(data)
+        this.setState({api_info:[data]});
+      });
+      socket.on('disconnect', ()=> {
+        console.log("disconnected to WS server");
+        let data = [{
+          "id":1, 
+          "status":false,
+          "temp":"_",
+          "con_speed":"_",
+          "cpu":"_",
+          "camera":false,
+          "ir":false
+        }]
+        this.setState({api_info:data});
+        
+        console.log(socket.connected); 
+      
+      });
     }
     render() {
         const { isLoading, api_info, error } = this.state;
@@ -56,7 +60,7 @@ class Home extends React.Component {
 
             <h1>{error ? <p  className="error">{error.message}.try again!!</p> : null}</h1>
 
-            {isLoading ? (
+            {true ? (
               api_info.map(info => {
                 const {id, status,temp,con_speed,cpu,camera,ir } = info;
                 return (
