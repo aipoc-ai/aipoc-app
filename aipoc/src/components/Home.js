@@ -33,7 +33,7 @@ class Home extends React.Component {
       
       });
       socket.on('message', (data) => {
-        console.log(data)
+        
         this.setState({api_info:[data]});
       });
       socket.on('disconnect', ()=> {
