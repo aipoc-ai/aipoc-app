@@ -24,6 +24,22 @@ class Home extends React.Component {
             ques_error:null,
         }
     }
+    getdata=()=>{
+      this.setState({ error:null })
+
+      fetch(`http://127.0.0.1:8000/ques/`)
+
+      .then(response => response.json())
+
+      .then(data =>
+        this.setState({
+          isLoading:true,
+          questions: data
+        })
+      )
+      .catch(error => this.setState({ ques_error:error }));
+
+      };
     componentDidMount(){
       const socket = io("http://127.0.0.1:5000");
       socket.on('connect', function() {
@@ -52,13 +68,17 @@ class Home extends React.Component {
         console.log(socket.connected); 
       
       });
+      this.setState({intervalID : setInterval(this.getdata.bind(this), 1000)})
+    }
+    componentWillUnmount(){
+      clearInterval(this.state.intervalID)
     }
     render() {
         const { isLoading, api_info, error } = this.state;
         return (
         <div>
 
-            <h1>{error ? <p  className="error">{error.message}.try again!!</p> : null}</h1>
+             <h1>{error ? <p  className="error">{error.message}.try again!!</p> : null}</h1>
 
             {true ? (
               api_info.map(info => {
